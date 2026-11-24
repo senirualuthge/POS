@@ -1,14 +1,8 @@
-// ---------------------------------------------------------------
-// Mini POS - products, cart, checkout and sales history
-// Everything is saved in localStorage so the history survives reloads
-// ---------------------------------------------------------------
 
 const SALES_KEY = "pos_sales";
 const SALE_NO_KEY = "pos_next_sale_no";
 const PRODUCT_KEY = "pos_products";
 
-// ---------- product list (same shape as the Day09 productList) ----------
-// these defaults are only used the first time, after that the saved list wins
 const defaultProducts = [
     { id: 1, name: "Bun", price: 120 },
     { id: 2, name: "Cake", price: 750 },
@@ -27,7 +21,6 @@ let cart = [];
 let sales = [];
 let nextSaleNo = 1001;
 
-// ---------- helpers ----------
 
 function escapeHtml(value) {
     return String(value === undefined || value === null ? "" : value).replace(/[&<>"']/g, function (ch) {
@@ -39,7 +32,6 @@ function money(value) {
     return "Rs. " + Number(value).toFixed(2);
 }
 
-// ---------- products ----------
 
 function loadProducts() {
     let saved = localStorage.getItem(PRODUCT_KEY);
@@ -134,7 +126,6 @@ function removeProduct(productId) {
     renderProducts();
 }
 
-// ---------- cart ----------
 
 function addToCart(productId) {
     let product = productList.find(p => p.id === productId);
@@ -258,7 +249,6 @@ function renderCart() {
     document.getElementById("lblChange").innerText = money(change > 0 ? change : 0);
 }
 
-// ---------- checkout ----------
 
 function completeSale() {
     let message = document.getElementById("lblMessage");
@@ -317,7 +307,6 @@ function completeSale() {
     showReceipt(sale);
 }
 
-// ---------- receipt ----------
 
 function showReceipt(sale) {
     let date = new Date(sale.date).toLocaleString();
@@ -360,7 +349,6 @@ function newSale() {
     document.getElementById("receiptModal").hidden = true;
 }
 
-// ---------- sales history ----------
 
 function loadSales() {
     let saved = localStorage.getItem(SALES_KEY);
@@ -452,7 +440,6 @@ function renderSales() {
 
     let body = "";
 
-    // newest sale first
     for (let i = sales.length - 1; i >= 0; i--) {
         let sale = sales[i];
         let count = 0;
@@ -483,7 +470,6 @@ function clearHistory() {
     renderSales();
 }
 
-// ---------- start ----------
 
 document.getElementById("lblToday").innerText = new Date().toDateString();
 
