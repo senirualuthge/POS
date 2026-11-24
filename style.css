@@ -1,0 +1,526 @@
+/* ---------- page ---------- */
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: #f2f2f2;
+    font-family: Arial, sans-serif;
+    color: #222;
+}
+
+h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+h2 {
+    margin: 0 0 12px;
+    font-size: 18px;
+}
+
+/* ---------- top bar ---------- */
+
+.topbar {
+    max-width: 1100px;
+    margin: 0 auto 20px;
+    padding: 14px 20px;
+    background: #007bff;
+    color: #fff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.topbar span {
+    font-size: 14px;
+}
+
+/* ---------- layout ---------- */
+
+.layout {
+    max-width: 1100px;
+    margin: 0 auto 20px;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 20px;
+    align-items: start;
+}
+
+.panel {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.panel.history,
+.panel.summary {
+    max-width: 1060px;
+    margin: 0 auto 20px;
+}
+
+/* ---------- today's summary ---------- */
+
+.summary-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.summary-head h2 {
+    margin: 0;
+}
+
+.summary-date {
+    font-size: 13px;
+    color: #666;
+}
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.stat {
+    padding: 12px 14px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.stat-label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.stat strong {
+    font-size: 20px;
+    color: #007bff;
+}
+
+.summary h3 {
+    margin: 0 0 10px;
+    font-size: 15px;
+}
+
+.hint {
+    margin: 0 0 15px;
+    font-size: 13px;
+    color: #666;
+}
+
+/* ---------- products ---------- */
+
+/* ---------- add product form ---------- */
+
+.add-product {
+    display: grid;
+    grid-template-columns: 1fr 120px auto;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.add-product input {
+    margin-bottom: 0;
+}
+
+.add-product button {
+    width: auto;
+    margin: 0;
+    padding: 8px 14px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+/* ---------- product cards ---------- */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+}
+
+.product {
+    position: relative;
+    display: flex;
+}
+
+.product-add {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    padding: 16px 26px 16px 12px;
+    font-family: Arial, sans-serif;
+    text-align: left;
+    background: #f9f9f9;
+    color: #222;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.product-add:hover {
+    background: #eef5ff;
+    border-color: #007bff;
+}
+
+.product-name {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.product-price {
+    font-size: 13px;
+    color: #007bff;
+}
+
+.product-remove {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
+    color: #999;
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+.product-remove:hover {
+    color: #c00;
+    background: #ffe3e3;
+}
+
+/* ---------- form controls ---------- */
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    background: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.clear {
+    margin-top: 8px;
+    color: #333;
+    background: #e6e6e6;
+}
+
+.clear:hover {
+    background: #d5d5d5;
+}
+
+.small {
+    width: auto;
+    margin: 0;
+    padding: 6px 12px;
+    font-size: 13px;
+}
+
+/* ---------- cart ---------- */
+
+.fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 8px 4px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.cart-table th {
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.unit {
+    display: block;
+    font-size: 12px;
+    color: #888;
+}
+
+.qty {
+    white-space: nowrap;
+}
+
+.qty span {
+    display: inline-block;
+    min-width: 22px;
+    text-align: center;
+}
+
+.step {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
+    color: #007bff;
+    background: #eef5ff;
+}
+
+.step:hover {
+    background: #dbe9ff;
+}
+
+.remove {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    line-height: 1;
+    background: #f0f0f0;
+    color: #c00;
+}
+
+.remove:hover {
+    background: #ffe3e3;
+}
+
+.totals {
+    padding-top: 8px;
+    border-top: 2px solid #eee;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 14px;
+}
+
+.row.total {
+    border-top: 1px solid #eee;
+    margin-top: 4px;
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.message {
+    margin: 8px 0;
+    min-height: 18px;
+    font-size: 13px;
+    color: #c00;
+}
+
+/* ---------- history table ---------- */
+
+.history-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.history-head h2 {
+    margin: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+th,
+td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: #f7f7f7;
+}
+
+tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+tbody tr:hover {
+    background: #eef5ff;
+}
+
+.empty {
+    text-align: center;
+    color: #888;
+}
+
+/* ---------- receipt modal ---------- */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal[hidden] {
+    display: none;
+}
+
+.receipt {
+    width: 100%;
+    max-width: 340px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 6px;
+}
+
+.receipt h2 {
+    text-align: center;
+}
+
+.receipt-meta {
+    margin: 0 0 15px;
+    font-size: 13px;
+    color: #555;
+    text-align: center;
+    white-space: pre-line;
+}
+
+.receipt-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 5px 0;
+    font-size: 14px;
+    border-bottom: 1px dashed #eee;
+}
+
+.receipt-totals {
+    margin: 12px 0 18px;
+    border-top: 2px solid #eee;
+}
+
+.receipt-totals .receipt-line {
+    border-bottom: none;
+    font-weight: bold;
+}
+
+.receipt-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.receipt-actions .clear {
+    margin-top: 0;
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 820px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .add-product {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- print: only the receipt goes on paper ---------- */
+
+@media print {
+    @page {
+        margin: 10mm;
+    }
+
+    body {
+        padding: 0;
+        background: #fff;
+    }
+
+    body > *:not(#receiptModal) {
+        display: none !important;
+    }
+
+    .modal {
+        position: static;
+        display: block;
+        padding: 0;
+        background: none;
+    }
+
+    .modal[hidden] {
+        display: none !important;
+    }
+
+    .receipt {
+        max-width: 360px;
+        margin: 0 auto;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+    }
+
+    .receipt-actions {
+        display: none !important;
+    }
+}

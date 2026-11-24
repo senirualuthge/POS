@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini POS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="topbar">
+        <h1>Mini POS</h1>
+        <span id="lblToday"></span>
+    </header>
+
+    <main class="layout">
+
+        <!-- ---------- products ---------- -->
+        <section class="panel">
+            <h2>Products</h2>
+            <p class="hint">Click a product to add it to the sale. Use &times; to remove one from the list.</p>
+
+            <form class="add-product" onsubmit="addProduct(); return false;">
+                <input type="text" id="txtNewProduct" placeholder="New product name" required>
+                <input type="number" id="txtNewPrice" min="0" step="0.01" placeholder="Price" required>
+                <button type="submit">Add Product</button>
+            </form>
+            <p class="message" id="lblProductMessage"></p>
+
+            <div class="product-grid" id="productGrid"></div>
+        </section>
+
+        <!-- ---------- cart ---------- -->
+        <aside class="panel cart">
+            <h2>Current Sale</h2>
+
+            <label for="txtCustomer">Customer name (optional)</label>
+            <input type="text" id="txtCustomer" placeholder="Walk-in customer">
+
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Qty</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="cartBody"></tbody>
+            </table>
+
+            <div class="totals">
+                <div class="row">
+                    <span>Items</span>
+                    <span id="lblCount">0</span>
+                </div>
+                <div class="row">
+                    <span>Subtotal</span>
+                    <span id="lblSubtotal">Rs. 0.00</span>
+                </div>
+                <div class="row">
+                    <span id="lblDiscountLabel">Discount</span>
+                    <span id="lblDiscount">Rs. 0.00</span>
+                </div>
+                <div class="row total">
+                    <span>Total</span>
+                    <span id="lblTotal">Rs. 0.00</span>
+                </div>
+            </div>
+
+            <div class="fields">
+                <div>
+                    <label for="txtDiscount">Discount %</label>
+                    <input type="number" id="txtDiscount" min="0" max="100" step="1" value="0" oninput="renderCart()">
+                </div>
+                <div>
+                    <label for="txtCash">Cash received</label>
+                    <input type="number" id="txtCash" min="0" step="0.01" placeholder="0.00" oninput="renderCart()">
+                </div>
+            </div>
+
+            <div class="row">
+                <span>Change</span>
+                <span id="lblChange">Rs. 0.00</span>
+            </div>
+
+            <p class="message" id="lblMessage"></p>
+
+            <button onclick="completeSale()">Complete Sale</button>
+            <button class="clear" onclick="clearCart()">Clear Cart</button>
+        </aside>
+
+    </main>
+
+    <!-- ---------- today's summary ---------- -->
+    <section class="panel summary">
+        <div class="summary-head">
+            <h2>Today's Summary</h2>
+            <span class="summary-date" id="lblSummaryDate"></span>
+        </div>
+
+        <div class="summary-cards">
+            <div class="stat">
+                <span class="stat-label">Revenue</span>
+                <strong id="statRevenue">Rs. 0.00</strong>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Sales</span>
+                <strong id="statSales">0</strong>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Items sold</span>
+                <strong id="statItems">0</strong>
+            </div>
+        </div>
+
+        <h3>Best Sellers</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Qty sold</th>
+                    <th>Revenue</th>
+                </tr>
+            </thead>
+            <tbody id="bestSellersBody"></tbody>
+        </table>
+    </section>
+
+    <!-- ---------- sales history ---------- -->
+    <section class="panel history">
+        <div class="history-head">
+            <h2>Sales History</h2>
+            <button class="small clear" onclick="clearHistory()">Clear History</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Date</th>
+                    <th>Customer</th>
+                    <th>Items</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="salesBody"></tbody>
+        </table>
+    </section>
+
+    <!-- ---------- receipt ---------- -->
+    <div class="modal" id="receiptModal" hidden>
+        <div class="receipt">
+            <h2>Receipt</h2>
+            <p class="receipt-meta" id="receiptMeta"></p>
+            <div id="receiptItems"></div>
+            <div class="receipt-totals" id="receiptTotals"></div>
+
+            <div class="receipt-actions">
+                <button onclick="printReceipt()">Print Receipt</button>
+                <button class="clear" onclick="newSale()">New Sale</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
